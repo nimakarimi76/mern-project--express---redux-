@@ -18,7 +18,7 @@ function App() {
         <Navbar />
       </div>
       <Routes>
-        <Route exact path="/" element={<Home />} />
+        <Route path="/" element={<Home />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/counter" element={<Counter />} />
         <Route path="/fetch" element={<Fetch />} />
