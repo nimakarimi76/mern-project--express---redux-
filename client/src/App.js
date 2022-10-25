@@ -1,29 +1,28 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import { Routes, Route } from "react-router";
+
 import "./App.css";
 
 import Navbar from "./layout/Navbar";
+import Fetch from "./components/Fetch";
+import Home from "./pages/Home";
+import Blog from "./pages/Blog";
+import About from "./pages/About";
+import Counter from "./pages/Counter";
 
 function App() {
-  const [backendData, setBackendData] = useState([]);
-
-  useEffect(() => {
-    fetch("/api").then((response) =>
-      response.json().then((data) => {
-        setBackendData(data);
-      })
-    );
-  }, []);
-
   return (
     <div>
-      <Navbar />
-      <h1 className="text-3xl text-center my-4">express + react</h1>
-
-      {typeof backendData.users === "undefined" ? (
-        <p className="text-gray-600">Loading...</p>
-      ) : (
-        backendData.users.map((user, index) => <p key={index}>{user}</p>)
-      )}
+      <div className="bg-main-bg dark:bg-secondary-dark-bg dark:text-white navbar w-full">
+        <Navbar />
+      </div>
+      <Routes>
+        <Route exact path="/" element={<Home />} />
+        <Route path="/blog" element={<Blog />} />
+        <Route path="/counter" element={<Counter />} />
+        <Route path="/fetch" element={<Fetch />} />
+        <Route path="/about" element={<About />} />
+      </Routes>
     </div>
   );
 }
