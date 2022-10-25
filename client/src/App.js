@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import "./App.css";
 
 function App() {
   const [backendData, setBackendData] = useState([]);
@@ -13,7 +14,7 @@ function App() {
 
   return (
     <div>
-      <h1> express + react</h1>
+      <h1 className="text-3xl text-center">express + react</h1>
 
       {typeof backendData.users === "undefined" ? (
         <p>Loading...</p>
