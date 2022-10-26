@@ -13,9 +13,9 @@ const PostList = () => {
         key={post.id}
         className="p-3 border-2 border-blue-400 shadow-md m-9"
       >
-        <span className="text-gray-400 text-md"> {post.id}- </span>
-        <span className="text-lg font-bold">{post.title}</span>
+        <p className="text-lg font-bold">{post.title}</p>
         <p> {post.content.substring(0, 100)}</p>
+        <span className="text-gray-400 text-sm"> {post.id} </span>
       </article>
     );
   });
