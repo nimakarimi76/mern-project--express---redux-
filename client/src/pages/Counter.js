@@ -6,7 +6,7 @@ import {
   decrement,
   reset,
   addByAmount,
-} from "../components/counter/counterSlice";
+} from "../features/counter/counterSlice";
 
 function Counter() {
   const count = useSelector((state) => state.counter.count);
