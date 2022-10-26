@@ -1,9 +1,12 @@
-import React from 'react'
+import React from "react";
+import PostList from "../features/posts/PostList";
 
 function Blog() {
   return (
-    <div>Blog</div>
-  )
+    <div>
+      <PostList />
+    </div>
+  );
 }
 
-export default Blog
+export default Blog;

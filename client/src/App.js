@@ -13,7 +13,7 @@ import NotFound from "./pages/NotFound";
 
 function App() {
   return (
-    <div>
+    <main>
       <div className="bg-main-bg dark:bg-secondary-dark-bg dark:text-white navbar w-full">
         <Navbar />
       </div>
@@ -25,7 +25,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
-    </div>
+    </main>
   );
 }
 

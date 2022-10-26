@@ -19,3 +19,7 @@ body {
 .btn-blue:hover {
   @apply bg-blue-700;
 }
+
+.padding {
+  padding: 2rem;
+}
