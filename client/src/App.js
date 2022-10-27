@@ -10,6 +10,7 @@ import Blog from "./pages/Blog";
 import About from "./pages/About";
 import Counter from "./pages/Counter";
 import NotFound from "./pages/NotFound";
+import Shop from "./pages/Shop";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/blog" element={<Blog />} />
         <Route path="/counter" element={<Counter />} />
         <Route path="/fetch" element={<Fetch />} />
+        <Route path="/Shop" element={<Shop />} />
         <Route path="/about" element={<About />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

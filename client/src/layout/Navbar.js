@@ -10,6 +10,7 @@ const navigation = [
   { name: "Counter", href: "counter", current: false },
   { name: "Blog", href: "/blog", current: false },
   { name: "Fetch", href: "/fetch", current: false },
+  { name: "Shop", href: "/shop", current: false },
   { name: "About", href: "/about", current: false },
 ];
 
