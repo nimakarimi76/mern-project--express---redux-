@@ -5,15 +5,9 @@ import { useSelector } from "react-redux";
 
 const CartItems = () => {
   const itemsList = useSelector((state) => state.cart.itemsList);
-  const showCart = useSelector((state) => state.cart.showCart);
 
   return (
-    <div
-      className="cart-container"
-      style={{
-        display: showCart ? "block" : "none",
-      }}
-    >
+    <div className="cart-container">
       <h2 className="text-xl font-bold padding">Your Cart</h2>
       <ul>
         {itemsList.map((item) => {
