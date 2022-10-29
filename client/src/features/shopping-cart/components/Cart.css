@@ -14,7 +14,7 @@ li {
   border: 1px solid black;
   border-radius: 10px;
   margin: 20px;
-  height: 400px;
+  /* height: 400px; */
   padding: 10px;
   overflow: scroll;
   overflow-x: hidden;
@@ -25,11 +25,12 @@ li {
   justify-content: space-between;
   border: 1px solid black;
   border-radius: 10px;
-  padding: 20px;
+  padding: 0.5rem 2rem;
   font-size: 20px;
-  font-weight: bold;
+  /* font-weight: bold; */
   background: #2f3c7e;
   color: #fbeaeb;
+  align-items: center;
 }
 .cart-actions {
   color: white;

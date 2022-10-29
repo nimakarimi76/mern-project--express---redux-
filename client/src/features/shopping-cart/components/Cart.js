@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./Cart.css";
+import cartIcon from "./shopping-cart.png";
 
 import { showCart } from "./cartSlice";
 
@@ -14,7 +15,14 @@ const Cart = () => {
 
   return (
     <div className="cartIcon" onClick={handleShowCart}>
-      <h3>Cart: {itemsCount} Items</h3>
+      {itemsCount === 0 ? (
+        <img className="h-5" src={cartIcon} alt="cart" />
+      ) : (
+        <span className="flex text-green-700">
+          {itemsCount}
+          <img className="h-5 mx-1" src={cartIcon} alt="cart" />
+        </span>
+      )}
     </div>
   );
 };

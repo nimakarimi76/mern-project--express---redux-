@@ -1,6 +1,7 @@
 import React from "react";
 import Cart from "./Cart";
 import "./Header.css";
+
 const Header = () => {
   return (
     <header>
@@ -8,10 +9,10 @@ const Header = () => {
         <ul className="header-ul">
           <li>
             <h2
-              className="header-h2"
+              className="header-h2 pl-5"
               style={{ fontFamily: "monospace", fontSize: "30px" }}
             >
-              Your Shopping Cart
+              Welcome to our shop
             </h2>
           </li>
           <li>
