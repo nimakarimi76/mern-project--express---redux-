@@ -18,12 +18,15 @@ const NewPostForm = () => {
           id: nanoid(),
           title,
           content,
+          date: new Date().toISOString(),
         })
       );
       setTitle("");
       setContent("");
     }
   };
+
+  const canSave = Boolean(title) && Boolean(content);
   return (
     <section className="padding">
       <h1 className="text-3xl font-bold">Add a new post</h1>
@@ -62,6 +65,7 @@ const NewPostForm = () => {
           type="button"
           className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:shadow-outline"
           onClick={onSavePostClicked}
+          disabled={!canSave}
         >
           Save Post
         </button>
