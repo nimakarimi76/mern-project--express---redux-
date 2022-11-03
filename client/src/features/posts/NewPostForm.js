@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { nanoid } from "@reduxjs/toolkit";
-import { newPost } from "./postsSlice";
+import { newPost, reactionAdded } from "./postsSlice";
 
 const NewPostForm = () => {
   const [title, setTitle] = useState("");
@@ -19,6 +19,12 @@ const NewPostForm = () => {
           title,
           content,
           date: new Date().toISOString(),
+          reactions: {
+            thumbsUp: 0,
+            wow: 0,
+            heart: 0,
+            dislike: 0,
+          },
         })
       );
       setTitle("");

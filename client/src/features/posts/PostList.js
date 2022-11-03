@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { selectAllPosts } from "./postsSlice";
 import TimeAgo from "./TimeAgo";
+import ReactionButtons from "./ReactionButtons";
 
 const PostList = () => {
   //   const posts = useSelector((state) => state.posts);
@@ -21,6 +22,8 @@ const PostList = () => {
 
           <TimeAgo timestamp={post.date} />
         </span>
+
+        <ReactionButtons post={post} />
       </article>
     );
   });
