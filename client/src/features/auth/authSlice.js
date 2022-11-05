@@ -1,6 +1,14 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "axios";
 
-const initialState = { isLoggedIn: true };
+const USERS_URL = "https://jsonplaceholder.typicode.com/users";
+
+export const fetchUsers = createAsyncThunk("posts/fetchUsers", async () => {
+  const response = await axios.get(USERS_URL);
+  return response.data;
+});
+
+const initialState = [{ isLoggedIn: false }];
 
 const authSlice = createSlice({
   name: "auth",
@@ -12,6 +20,11 @@ const authSlice = createSlice({
     logout: (state) => {
       state.isLoggedIn = false;
     },
+  },
+  extraReducers(builder) {
+    builder.addCase(fetchUsers.fulfilled, (state, action) => {
+      return action.payload;
+    });
   },
 });
 

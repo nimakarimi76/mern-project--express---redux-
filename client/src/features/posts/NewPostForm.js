@@ -1,14 +1,17 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { nanoid } from "@reduxjs/toolkit";
 import { newPost } from "./postsSlice";
 
 const NewPostForm = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+  const [userId, setUserId] = useState("");
+  const users = useSelector((state) => state.auth);
 
   const onTitleChange = (e) => setTitle(e.target.value);
   const onContentChange = (e) => setContent(e.target.value);
+  const onAuthorChange = (e) => setUserId(e.target.value);
 
   const dispatch = useDispatch();
   const onSavePostClicked = () => {
@@ -18,6 +21,7 @@ const NewPostForm = () => {
           id: nanoid(),
           title,
           content,
+          userId,
           date: new Date().toISOString(),
           reactions: {
             thumbsUp: 0,
@@ -32,7 +36,15 @@ const NewPostForm = () => {
     }
   };
 
-  const canSave = Boolean(title) && Boolean(content);
+  const userOptions = users.map((user) => {
+    return (
+      <option key={user.id} value={user.id}>
+        {user.name}
+      </option>
+    );
+  });
+
+  const canSave = Boolean(title) && Boolean(content) && Boolean(userId);
   return (
     <section className="padding">
       <h1 className="text-3xl font-bold">Add a new post</h1>
@@ -51,6 +63,22 @@ const NewPostForm = () => {
           value={title}
           onChange={onTitleChange}
         />
+
+        <label
+          className="block text-gray-700 text-sm font-bold"
+          htmlFor="postAuthor"
+        >
+          Author:
+        </label>
+        <select
+          className="w-6/12 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5"
+          id="postAuthor"
+          value={userId}
+          onChange={onAuthorChange}
+        >
+          <option selected>Choose an author</option>
+          {userOptions}
+        </select>
 
         <label
           className="block text-gray-700 text-sm font-bold"

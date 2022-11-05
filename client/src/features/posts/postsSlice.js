@@ -21,7 +21,7 @@ const postsSlice = createSlice({
   initialState,
   reducers: {
     newPost(state, action) {
-      state.push(action.payload);
+      state.allPosts.push(action.payload);
     },
     reactionAdded(state, action) {
       const { postId, reaction } = action.payload;
