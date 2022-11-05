@@ -1,37 +1,45 @@
-import React from "react";
-import { useSelector } from "react-redux";
-import { selectAllPosts } from "./postsSlice";
-import TimeAgo from "./TimeAgo";
-import ReactionButtons from "./ReactionButtons";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  selectAllPosts,
+  getPostsStatus,
+  getPostsError,
+  fetchPosts,
+} from "./postsSlice";
+
+import PostsExcerpt from "./PostsExcerpt";
 
 const PostList = () => {
+  const dispatch = useDispatch();
+
   //   const posts = useSelector((state) => state.posts);
   //* instead we use the bellow variable if the state structure changed in the future we just need to change the slice, not in every components
   const posts = useSelector(selectAllPosts);
 
-  const renderPosts = posts.map((post) => {
-    return (
-      <article
-        key={post.id}
-        className="p-3 border-2 border-blue-400 shadow-md m-9"
-      >
-        <p className="text-lg font-bold">{post.title}</p>
-        <p> {post.content.substring(0, 100)}</p>
-        <span className="text-gray-400 text-sm">
-          {post.id}
+  const postStatus = useSelector(getPostsStatus);
+  const error = useSelector(getPostsError);
 
-          <TimeAgo timestamp={post.date} />
-        </span>
+  useEffect(() => {
+    if (postStatus === "idle") {
+      dispatch(fetchPosts());
+    }
+  }, [postStatus, dispatch]);
 
-        <ReactionButtons post={post} />
-      </article>
-    );
-  });
+  let content;
+  if (postStatus === "loading") {
+    content = <p>Loading...</p>;
+  } else if (postStatus === "succeeded") {
+    content = posts.map((post) => {
+      return <PostsExcerpt key={post.id} post={post} />;
+    });
+  } else if (postStatus === "failed") {
+    content = <p>{error}</p>;
+  }
 
   return (
     <section>
       <h1 className="text-3xl m-4 text-center">Posts</h1>
-      {renderPosts}
+      {content}
     </section>
   );
 };

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { nanoid } from "@reduxjs/toolkit";
-import { newPost, reactionAdded } from "./postsSlice";
+import { newPost } from "./postsSlice";
 
 const NewPostForm = () => {
   const [title, setTitle] = useState("");
