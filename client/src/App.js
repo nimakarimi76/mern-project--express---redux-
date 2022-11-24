@@ -11,6 +11,8 @@ import About from "./pages/About";
 import Counter from "./pages/Counter";
 import NotFound from "./pages/NotFound";
 import Shop from "./pages/Shop";
+import NewPostForm from "./features/posts/NewPostForm";
+import SinglePostPage from "./features/posts/SinglePostPage";
 
 function App() {
   return (
@@ -20,7 +22,14 @@ function App() {
       </div>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/blog" element={<Blog />} />
+        <Route path="blog">
+          <Route index element={<Blog />} />
+          <Route path="post">
+            <Route index element={<NewPostForm />} />
+            <Route path=":postId" element={<SinglePostPage />} />
+          </Route>
+        </Route>
+
         <Route path="/counter" element={<Counter />} />
         <Route path="/fetch" element={<Fetch />} />
         <Route path="/Shop" element={<Shop />} />
